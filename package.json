@@ -1,0 +1,26 @@
+{
+  "name": "lop-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Gabriel Tibúrcio <tibuurcio@gmail.com> (https://tibuurcio.github.io/)",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "4.0.0",
+    "moment": "2.18.1",
+    "mongodb": "2.2.31",
+    "telegraf": "3.10.1"
+  },
+  "devDependencies": {
+    "cz-ptbr-changelog": "1.0.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-ptbr-changelog"
+    }
+  }
+}

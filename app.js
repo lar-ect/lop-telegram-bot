@@ -8,7 +8,6 @@ dotenv.config({ path: 'variables.env' });
 
 const app = new Telegraf(process.env.BOT_TOKEN);
 app.command('start', ({ from, reply }) => {
-  console.log('start', from);
   return reply('Bem vindo!');
 });
 
@@ -16,6 +15,7 @@ app.command('start', ({ from, reply }) => {
 // app.on('sticker', (ctx) => ctx.reply('👍'));
 
 app.command('/dia', ({ reply }) => {
+	// Tenta conectar ao banco de dados
 	MongoClient.connect(process.env.DB_URL, function(err, db) {
 		if (err) {
 			reply('Erro ao recuperar relatório diário');
@@ -24,6 +24,8 @@ app.command('/dia', ({ reply }) => {
 		}
 		else {
 			const submissoes = db.collection('submissoes');
+			
+			// Acha todas as submissões feitas com a data >= o dia atual
 			submissoes.find({
 				data: { $gte: new Date(moment().format('YYYY-MM-DD')) }
 			}).toArray(function(err, docs) {
